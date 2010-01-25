@@ -136,8 +136,7 @@ class WorkController(object):
         # Need a tight loop interval when embedded so the program
         # can be stopped in a sensible short time.
         self.clockservice = self.embed_clockservice and ClockServiceThread(
-                                logger=self.logger,
-                                max_interval=1) or None
+                                logger=self.logger) or None
 
         prefetch_count = concurrency * conf.CELERYD_PREFETCH_MULTIPLIER
         self.listener = CarrotListener(self.ready_queue,
